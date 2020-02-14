@@ -1,38 +1,193 @@
 .App {
   text-align: center;
+  padding: 40px 50px 50px 40px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex{
+  margin-top: 20px;
+  padding: 10px 10px 10px 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid rgb(34, 41, 39);
 }
 
-.App-link {
-  color: #61dafb;
+span{
+  font-weight: bold;
+  font-size: 1.3vw
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.options{
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+
+/* import React, { Component } from 'react';
+import { LineChart } from 'react-chartkick'
+import 'chart.js'
+import './App.css'
+import Data from './data';
+
+var myObj = {
+  '0': 55,
+  '1': 73,
+  '2': 58,
+  '3': 252,
+  '4': 517,
+  '5': 109,
+  '-1': 39 }
+
+ 
+var sortable = [];
+for (var vehicle in myObj) {
+    sortable.push([vehicle, myObj[vehicle]]);
+}
+
+sortable.sort(function(a, b) {
+    return a[0] - b[0];
+});
+console.log(sortable)
+
+var objSorted = {}
+sortable.forEach(function(item){
+  console.log(item[0])
+    objSorted[item[0]]=item[1]
+})
+console.log(objSorted)
+  
+  // for(let i=0;i<10;i++)
+  // {
+  //   let obj={'-1':'','0':'','1':'','2':'','3':'','4':'','5':''}
+    
+  //   let all = { 'name': "1", 'data': obj }
+  //   ar.push(all)
+  // }
+   
+
+
+class App extends Component {
+  dummyData = new Data()
+  data = this.dummyData.data['rule']
+  array = []
+  array2 = []
+
+  state = {
+    category: "",
+    reviewStatus: "",
+    condition: ''
   }
-  to {
-    transform: rotate(360deg);
+
+  eligibility = () => {
+    this.setState({ category: "Eligibility Check", condition: true })
+    this.array = []
+  }
+  rejection = () => {
+    this.setState({ category: "REJECTION_RULE", condition: true })
+    this.array = []
+  }
+  account = () => {
+    this.setState({ category: "BANK_ACCOUNT_VERIFICATION", condition: true })
+    this.array = []
+  }
+  accountName = () => {
+    this.setState({ category: "BANK_ACCOUNT_NAME_VERIFICATION", condition: true })
+    this.array = []
+  }
+
+  reviewStatusPassed = () => {
+    this.setState({ reviewStatus: "PASSED", condition: false })
+    this.array = []
+
+  }
+  reviewStatusRejected = () => {
+    this.setState({ reviewStatus: "REJECTED", condition: false })
+    this.array = []
+  }
+
+
+  //Array of all Unique rule ID
+  ruleId = Object.entries(this.data).map(rId => rId[1].ruleId).filter((item, index, inputArray) => {
+    return inputArray.indexOf(item) === index;
+  });
+
+
+
+
+  render() {
+
+    if (this.state.condition === true) {
+      this.ruleId.map(id => {
+        let all = { 'name': id, 'data': {} }
+        this.array.push(all)
+      })
+
+      //adding data values to formatted array
+      this.array.map((item) => {
+        Object.entries(this.data).map(ruleData => {
+          if (ruleData[1].ruleId === item.name) {
+            if (ruleData[1].category === this.state.category)
+              return item.data[ruleData[1].weekNumber] = ruleData[1].count
+          }
+        })
+      })
+    }
+    else if (this.state.condition === false) {
+      this.ruleId.map(id => {
+        let all = { 'name': id, 'data': {} }
+        this.array.push(all)
+      })
+
+      //adding data values to formatted array
+      this.array.map((item) => {
+        Object.entries(this.data).map(ruleData => {
+          if (ruleData[1].ruleId === item.name) {
+            if (ruleData[1].reviewStatus === this.state.reviewStatus)
+              return item.data[ruleData[1].weekNumber] = ruleData[1].count
+          }
+        })
+      })
+    }
+    else {
+      {
+        this.ruleId.map(id => {
+          let all = { 'name': id, 'data': {} }
+          this.array.push(all)
+        })
+
+        //adding data values to formatted array
+        this.array.map((item) => {
+          Object.entries(this.data).map(ruleData => {
+            if (ruleData[1].ruleId === item.name) {
+              return item.data[ruleData[1].weekNumber] = ruleData[1].count
+            }
+          })
+        })
+      }
+    }
+console.log(this.array)
+
+
+    return (
+      <div className="App">
+        <LineChart data={this.array} download={{ background: "#fff" }} height="500px" xtitle="Week Number" ytitle="Count" library={{ backgroundColor: "yellow" }} />
+        <div className="flex">
+          <span className="span-b" onClick={this.eligibility}>Eligibility Check</span>
+          <span onClick={this.rejection}>Rejection Rule</span>
+          <span onClick={this.accountName}>Bank Account Name Verification</span>
+          <span onClick={this.account}>Bank Account Verification</span>
+          <span onClick={this.reviewStatusPassed}>PASSED</span>
+          <span onClick={this.reviewStatusRejected}>REJECTED</span>
+        </div>
+        <div className="options">
+         
+        </div>
+      </div>
+    );
   }
 }
+
+export default App; */
